@@ -52,6 +52,7 @@
             <?php endfor ?>
         </div>
 
+
         {{-- Hot Produk --}}
         <h2 class="font-weight-bold p-2">Hot Products</h2>
         <div class="row row-cols-md-4 row-cols-2 mb-5">

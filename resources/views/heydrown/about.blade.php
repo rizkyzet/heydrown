@@ -1,6 +1,7 @@
 @extends('heydrown.layouts.app')
 
 @section('content')
+    <div class="se-pre-con"></div>
     <div class="parallax-about d-flex justify-content-center align-items-center">
         <h1 class="font-weight-bold text-white heading" data-aos="fade-in" data-aos-duratuin="3000">HEYDROWN</h1>
     </div>
@@ -54,7 +55,10 @@
 @push('scripts')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        $(document).ready(function() {
+            $(".se-pre-con").fadeOut("slow");
+            AOS.init();
+        })
     </script>
 @endpush
 
@@ -62,6 +66,18 @@
 @push('css')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            overflow: hidden;
+            background: url({{ asset('img/loading.gif') }}) center no-repeat black;
+        }
+
+
         .parallax-about {
             /* The image used */
             background-image: url({{ asset('img/about-1.jpg') }});
