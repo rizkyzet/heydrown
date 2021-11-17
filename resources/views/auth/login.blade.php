@@ -33,11 +33,15 @@
                         <div class="col-8">
                             <h2 class="font-weight-bold text-white mb-2">LOGIN TO HEYDROWN</h2>
                             <div class="py-3">
-                                <a href="{{ route('social.login', ['website' => 'google']) }}"
-                                    class="text-white text-decoration-none"><i class="bi bi-google"></i>&nbsp;
-                                    Login
-                                    with
-                                    google</a>
+
+                                @if (env('APP_ENV') == 'local')
+                                    <a href="{{ route('social.login', ['website' => 'google']) }}"
+                                        class="text-white text-decoration-none"><i class="bi bi-google"></i>&nbsp;
+                                        Login
+                                        with
+                                        google</a>
+                                @endif
+
                             </div>
 
                             <div class="form-group">
