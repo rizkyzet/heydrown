@@ -164,3 +164,34 @@ body {
 button.sign-out:hover {
     background-color: #343a40 !important;
 }
+
+
+/* ABOUT */
+.container-about {
+    min-height: 1000px;
+    background-color: var(--heydrown-primary-color);
+    overflow-x: hidden;
+}
+
+.parallax-about .heading {
+    letter-spacing: 10px;
+}
+
+.heading-text-column {
+    letter-spacing: 5px;
+}
+
+.about-description p {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.about-description .heydrown-offside {
+
+    font-size: 10rem;
+    color: white;
+    font-weight: bold;
+    opacity: 0.050;
+    letter-spacing: 10px;
+    font-family: serif;
+}

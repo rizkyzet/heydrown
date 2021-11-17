@@ -6,26 +6,26 @@
         <div class="col-4 col-md-3 col-lg-2" style="background-color: black;">
             <nav class="nav flex-column heydrown-sidebar">
                 <div class="mb-4">
-                    <h5 class="pl-2 font-weight-bold mt-2" style="border-bottom:0px solid white">SHIRT</h5>
-                    <a class="nav-link active" href="#">Short</a>
-                    <a class="nav-link" href="#">Long</a>
+                    <h5 class="pl-1 font-weight-bold mt-2" style="border-bottom:0px solid white">SHIRT</h5>
+                    <a class="nav-link active px-1" href="#">Short</a>
+                    <a class="nav-link px-1" href="#">Long</a>
                 </div>
 
                 <div class="mb-4">
-                    <h5 class="pl-2 font-weight-bold mt-2" style="border-bottom:0px solid white">JACKET</h5>
-                    <a class="nav-link" href="#">Varsity</a>
-                    <a class="nav-link" href="#">Denim</a>
-                    <a class="nav-link" href="#">Bomber</a>
+                    <h5 class="pl-1 font-weight-bold mt-2" style="border-bottom:0px solid white">JACKET</h5>
+                    <a class="nav-link px-1" href="#">Varsity</a>
+                    <a class="nav-link px-1" href="#">Denim</a>
+                    <a class="nav-link px-1" href="#">Bomber</a>
                 </div>
             </nav>
         </div>
         <div class="col">
             <div class="row justify-content-between py-3 row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-1">
                 <div class="col">
-                    <h3 class="font-weight-bold pl-3">All Product</h3>
+                    <h3 class="font-weight-bold ">All Product</h3>
                 </div>
                 <div class="col d-flex align-items-center flex-sm-column flex-lg-row flex-md-row flex-column">
-                    <input type="text" class="form-control d-inline mb-2">
+                    <input type="text" class="form-control d-inline mb-2" placeholder="search...">
                     <button class="btn btn-dark btn-heydrown-black align-self-end mb-2">Search</button>
                 </div>
 

@@ -24,6 +24,9 @@
 
     {{-- My CSS --}}
     <link rel="stylesheet" href="/css/style.css">
+
+    @stack('css')
+
 </head>
 
 <body>
@@ -31,13 +34,16 @@
     @include('heydrown.layouts.navbar')
 
     {{-- Konten --}}
-    <div class="container-fluid heydrown-bg text-white px-0 py-0" style="min-height: 70vh">
 
+    @if (Request::path() == 'about')
         @yield('content')
+    @else
+        <div class="container-fluid heydrown-bg text-white px-0 py-0" style="min-height: 70vh">
+            @yield('content')
+        </div>
 
+    @endif
 
-
-    </div>
 
 
     @include('heydrown.layouts.footer')

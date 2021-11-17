@@ -25,6 +25,11 @@ Route::get('/product/this-is-slug', function () {
     return view('heydrown.product');
 });
 
+Route::get('/about', function () {
+    return view('heydrown.about');
+})->name('outside.about');
+
+
 Route::get('/login', function () {
     return view('heydrown.auth.login');
 });

@@ -13,7 +13,8 @@
                     href="{{ route('outside.home') }}">Home</a>
                 <a class="nav-link {{ Request::RouteIs('outside.products') ? 'active' : '' }}"
                     href="{{ route('outside.products') }}">Product</a>
-                <a class="nav-link {{ Request::RouteIs('outside.about') ? 'active' : '' }}" href="#">About</a>
+                <a class="nav-link {{ Request::RouteIs('outside.about') ? 'active' : '' }}"
+                    href="{{ route('outside.about') }}">About</a>
                 <a class="nav-link {{ Request::RouteIs('outside.contact') ? 'active' : '' }}" href="">Contact</a>
             </div>
             <div class="navbar-nav">
