@@ -10,7 +10,7 @@
             </div>
             <div class="col py-4 px-4">
                 <div class="product-header">
-                    <h1 class="font-weight-bold">Heydrown Shirt One</h1>
+                    <h2 class="font-weight-bold">Heydrown Shirt One</h2>
                     <p class=" p-0 m-0 nama">T-Shirt &mdash; Short Leeve</p>
                     <p class="p-0 harga">Rp. 100.000</p>
                 </div>
@@ -39,7 +39,7 @@
                         <div class="col-3">
                             <div class="form-group">
                                 <label for="" class="font-weight-bold">Quantity</label>
-                                <input type="number" class="form-control">
+                                <input type="number" min="1" class="form-control">
                             </div>
                         </div>
                         <div class="col d-flex align-items-center mt-3 ">

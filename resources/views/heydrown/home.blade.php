@@ -37,11 +37,12 @@
                     <div class="position-absolute top-0 px-3 py-1" style="background-color: rgb(0, 0, 0,1);z-index:2;">
                         <a class="text-white text-decoration-none font-weight-bold">New</a>
                     </div>
-                    <a href="" class="product-photo-click">
+                    <a href="/product/this-is-slug" class="product-photo-click">
                         <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
                     <div class="card-body px-0 py-1">
-                        <a href="" class="text-decoration-none font-weight-bold text-white product-name">
+                        <a href="/product/this-is-slug"
+                            class="text-decoration-none font-weight-bold text-white product-name">
                             Heydrown Shirt One
                         </a>
                         <p>Rp. 100.000</p>
@@ -60,11 +61,12 @@
                     <div class="position-absolute top-0 px-3 py-1" style="background-color: rgb(0, 0, 0,1);z-index:2;">
                         <a class="text-white text-decoration-none font-weight-bold">Hot</a>
                     </div>
-                    <a href="" class="product-photo-click">
-                        <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
+                    <a href="/product/this-is-slug" class="product-photo-click">
+                        <img src="/img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
                     <div class="card-body px-0 py-1">
-                        <a href="" class="text-decoration-none font-weight-bold text-white product-name">
+                        <a href="/product/this-is-slug"
+                            class="text-decoration-none font-weight-bold text-white product-name">
                             Heydrown Shirt One
                         </a>
                         <p>Rp. 100.000</p>
@@ -80,11 +82,12 @@
             <?php for($i=1;$i<=8;$i++): ?>
             <div class="col px-4">
                 <div class="card bg-transparent heydrown-card">
-                    <a href="" class="product-photo-click">
+                    <a href="/product/this-is-slug" class="product-photo-click">
                         <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
                     <div class="card-body px-0 py-1">
-                        <a href="" class="text-decoration-none font-weight-bold text-white product-name">
+                        <a href="/product/this-is-slug"
+                            class="text-decoration-none font-weight-bold text-white product-name">
                             Heydrown Shirt One
                         </a>
                         <p>Rp. 100.000</p>
