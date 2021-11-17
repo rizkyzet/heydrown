@@ -1,6 +1,7 @@
 @extends('heydrown.layouts.app')
 
 @section('content')
+    <div class="heydrown-loading"></div>
     {{-- Caraousel --}}
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -80,9 +81,9 @@
         {{-- Gallery --}}
         <h2 class="font-weight-bold p-2">Sale Products</h2>
         <div class="row row-cols-md-4 row-cols-2">
-            <?php for($i=1;$i<=8;$i++): ?>
+            <?php for($i=1;$i<=7;$i++): ?>
             <div class="col px-4">
-                <div class="card bg-transparent heydrown-card">
+                <div class="card bg-transparent heydrown-card h-100">
                     <a href="/product/this-is-slug" class="product-photo-click">
                         <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
@@ -96,6 +97,20 @@
                 </div>
             </div>
             <?php endfor ?>
+            <div class="col px-4">
+                <div class="card bg-transparent heydrown-card h-100">
+                    <a href="/product/this-is-slug" class="product-photo-click">
+                        <img src="/img/fazri.jpg" class="card-img-top product-photo" alt="...">
+                    </a>
+                    <div class="card-body px-0 py-1">
+                        <a href="/product/this-is-slug"
+                            class="text-decoration-none font-weight-bold text-white product-name">
+                            Sesosok
+                        </a>
+                        <p>Rp. 100</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="d-flex justify-content-center mt-2">
             <a href="{{ route('outside.products') }}" class="btn border-0 text-white bg-heydrown"
@@ -103,3 +118,29 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $(".heydrown-loading").fadeOut("slow");
+            AOS.init();
+        })
+    </script>
+@endpush
+
+
+@push('css')
+    <style>
+        .heydrown-loading {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            overflow: hidden;
+            background: url({{ asset('img/loading.gif') }}) center no-repeat black;
+        }
+
+    </style>
+@endpush

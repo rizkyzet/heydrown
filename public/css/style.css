@@ -21,6 +21,17 @@ body {
     background-color: black;
 }
 
+.heydrown-navbar .navbar-brand {
+    letter-spacing: 3px;
+
+}
+
+.heydrown-navbar .navbar-brand img {
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 50%;
+}
+
 .heydrown-navbar .navbar-brand,
 .heydrown-navbar .nav-link {
     color: white !important;
@@ -55,6 +66,13 @@ body {
 
 .heydrown-card .product-photo-click:hover .product-photo {
     opacity: 0.4 !important;
+}
+
+.heydrown-card .product-photo {
+    box-sizing: border-box;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
 }
 
 

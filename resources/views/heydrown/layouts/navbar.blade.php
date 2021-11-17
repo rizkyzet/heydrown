@@ -1,21 +1,23 @@
     {{-- Navbar --}}
 
-    <nav class="navbar navbar-expand-lg heydrown-navbar navbar-dark sticky-top py-3">
-        <a class="navbar-brand font-weight-bold" href="/">{{ env('APP_NAME') }}</a>
+    <nav class="navbar navbar-expand-lg heydrown-navbar navbar-dark sticky-top ">
+        <a class="navbar-brand font-weight-bold" href="/"><img class="mr-3" src="/img/logo.png" alt=""
+                width="40" height="40">{{ env('APP_NAME') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav mx-auto">
+            <div class="navbar-nav mx-auto ">
                 <a class="nav-link {{ Request::RouteIs('outside.home') ? 'active' : '' }}"
                     href="{{ route('outside.home') }}">Home</a>
                 <a class="nav-link {{ Request::RouteIs('outside.products') ? 'active' : '' }}"
                     href="{{ route('outside.products') }}">Product</a>
                 <a class="nav-link {{ Request::RouteIs('outside.about') ? 'active' : '' }}"
                     href="{{ route('outside.about') }}">About</a>
-                <a class="nav-link {{ Request::RouteIs('outside.contact') ? 'active' : '' }}" href="">Contact</a>
+                <a class="nav-link {{ Request::RouteIs('outside.contact') ? 'active' : '' }}"
+                    href="{{ route('outside.contact') }}">Contact</a>
             </div>
             <div class="navbar-nav">
                 <a class="nav-link" href="">

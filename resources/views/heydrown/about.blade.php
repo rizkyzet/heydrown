@@ -1,7 +1,7 @@
 @extends('heydrown.layouts.app')
 
 @section('content')
-    <div class="se-pre-con"></div>
+    <div class="heydrown-loading"></div>
     <div class="parallax-about d-flex justify-content-center align-items-center">
         <h1 class="font-weight-bold text-white heading" data-aos="fade-in" data-aos-duratuin="3000">HEYDROWN</h1>
     </div>
@@ -56,7 +56,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         $(document).ready(function() {
-            $(".se-pre-con").fadeOut("slow");
+            $(".heydrown-loading").fadeOut("slow");
             AOS.init();
         })
     </script>
@@ -66,7 +66,7 @@
 @push('css')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .se-pre-con {
+        .heydrown-loading {
             position: fixed;
             left: 0px;
             top: 0px;

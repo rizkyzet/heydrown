@@ -29,6 +29,10 @@ Route::get('/about', function () {
     return view('heydrown.about');
 })->name('outside.about');
 
+Route::get('/contact', function () {
+    return view('heydrown.contact');
+})->name('outside.contact');
+
 
 Route::get('/login', function () {
     return view('heydrown.auth.login');
