@@ -25,6 +25,7 @@
                     <label for="">Message</label>
                     <textarea name="" id="" cols="30" rows="6" class="form-control"></textarea>
                 </div>
+                <button class="btn btn-dark btn-block btn-heydrown-black">Send</button>
             </div>
         </div>
     </div>

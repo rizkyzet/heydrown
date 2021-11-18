@@ -22,5 +22,13 @@ class DatabaseSeeder extends Seeder
         ], [
             'role_name' => 'pelanggan'
         ]]);
+
+        DB::table('users')->insert([
+            'name' => 'Mochamad Rizky',
+            'email' => 'rizkyzetzet121@gmail.com',
+            'password' => bcrypt('qwer121'),
+            'role_id' => 1,
+            'email_verified_at' => now()
+        ]);
     }
 }

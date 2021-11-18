@@ -70,9 +70,7 @@ body {
 
 .heydrown-card .product-photo {
     box-sizing: border-box;
-    height: 250px;
     object-fit: cover;
-    object-position: center;
 }
 
 

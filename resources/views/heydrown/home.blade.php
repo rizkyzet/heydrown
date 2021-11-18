@@ -28,7 +28,7 @@
 
 
 
-    <div class="container py-3 px-0">
+    <div class="container py-3">
         {{-- New Produk --}}
         <h2 class="font-weight-bold p-2">New Products</h2>
         <div class="row row-cols-md-4 row-cols-2 mb-5">
