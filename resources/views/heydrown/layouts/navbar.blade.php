@@ -35,6 +35,7 @@
                             {{ Auth::user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item font-weight-bold" href="{{ route('dashboard') }}">Dashboard</a>
                             <form action="/logout" method="POST">
                                 @csrf
                                 <button class="dropdown-item font-weight-bold">Logout</button>

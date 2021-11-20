@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['role_name'];
+    protected $table = 'roles';
+    protected $guarded = ['id'];
+    public $timestamps = true;
 
     public function user()
     {

@@ -51,6 +51,6 @@ class User extends Authenticatable
 
     public function isRole($role)
     {
-        return $this->role->role_name == $role;
+        return $this->role->nama == $role;
     }
 }

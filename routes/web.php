@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\{KategoriController, ProdukController, StokController};
+use App\Models\Kategori;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +45,22 @@ Route::get('/login', function () {
 Route::get('/dashboard', function () {
     return view('heydrown.dashboard.index');
 })->name('dashboard');
+
+// Kategori
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::resource('kategori', KategoriController::class)->scoped(['kategori' => 'slug']);
+});
+
+// Produk
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::resource('produk', ProdukController::class)->scoped(['produk' => 'slug']);
+});
+
+// Stok
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::resource('stok', StokController::class)->parameters(['stok' => 'produk'])->scoped(['produk' => 'slug']);
+});
+
 
 Auth::routes();
 

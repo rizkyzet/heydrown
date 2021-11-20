@@ -58,7 +58,6 @@ class LoginController extends Controller
 
         try {
             $user = Socialite::driver($website)->user();
-            dd($user);
             $cek = User::where('email', $user->email)->first();
 
             if ($cek) {
