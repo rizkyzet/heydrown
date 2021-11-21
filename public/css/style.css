@@ -57,6 +57,10 @@ body {
     background-color: var(--heydrown-primary-color);
 }
 
+.heydrown-bg-black {
+    background-color: var(--heydrown-secondary-color);
+}
+
 
 /* Card - Home*/
 .heydrown-card .product-photo {

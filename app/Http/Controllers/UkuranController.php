@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Produk, Ukuran, Stok};
+use App\Models\Ukuran;
 
-
-class StokController extends Controller
+class UkuranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,8 @@ class StokController extends Controller
      */
     public function index()
     {
-        $produk = Produk::all();
         $ukuran = Ukuran::all();
-
-
-
-
-        return view('heydrown.dashboard.stok.index', ['produk' => $produk, 'ukuran' => $ukuran]);
+        return view('heydrown.dashboard.ukuran.index', compact('ukuran'));
     }
 
     /**
@@ -31,7 +25,7 @@ class StokController extends Controller
      */
     public function create()
     {
-        //
+        return view('heydrown.dashboard.ukuran.create');
     }
 
     /**
@@ -42,7 +36,15 @@ class StokController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validData = $request->validate([
+            'tipe' => 'required|unique:ukuran,tipe'
+        ]);
+
+        $validData['tipe'] = strtoupper($validData['tipe']);
+
+        Ukuran::create($validData);
+
+        return redirect()->route('dashboard.ukuran.index')->with('success', 'Data ukuran berhasil ditambah!');
     }
 
     /**
@@ -62,11 +64,10 @@ class StokController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produk $produk)
+    public function edit(Ukuran $ukuran)
     {
 
-        $ukuran = Ukuran::all();
-        return view('heydrown.dashboard.stok.edit', ['produk' => $produk, 'ukuran' => $ukuran]);
+        return view('heydrown.dashboard.ukuran.edit', compact('ukuran'));
     }
 
     /**
@@ -76,9 +77,17 @@ class StokController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ukuran $ukuran)
     {
-        //
+        $validData = $request->validate([
+            'tipe' => 'required|unique:ukuran,tipe,' . $ukuran->id . ',id'
+        ]);
+
+        $validData['tipe'] = strtoupper($validData['tipe']);
+
+        $ukuran->update($validData);
+
+        return redirect()->route('dashboard.ukuran.index')->with('success', 'Data ukuran berhasil diubah!');
     }
 
     /**
@@ -87,34 +96,10 @@ class StokController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ukuran $ukuran)
     {
-        //
-    }
+        $ukuran->delete();
 
-    public function ajax()
-    {
-
-
-        $produk_id = request()->produk_id;
-        $ukuran_id = request()->ukuran_id;
-        $jumlah = request()->jumlah;
-
-        // dump($produk_id, $ukuran_id, $jumlah);
-
-        $produk = Produk::find($produk_id)->ukuran->where('id', $ukuran_id);
-        if ($produk->count() > 0) {
-            $produk->first()->stok->update(['jumlah' => $jumlah]);
-            return 'Stok updated to ' . $jumlah;
-        } else {
-
-            Stok::create([
-                'produk_id' => $produk_id,
-                'ukuran_id' => $ukuran_id,
-                'jumlah' => $jumlah
-            ]);
-
-            return 'Stok updated to ' . $jumlah;
-        }
+        return redirect()->route('dashboard.ukuran.index')->with('success', 'Data ukuran berhasil dihapus!');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\{KategoriController, ProdukController, StokController};
+use App\Http\Controllers\{KategoriController, ProdukController, StokController, UkuranController, DiskonController};
 use App\Models\Kategori;
 
 /*
@@ -58,7 +58,21 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
 
 // Stok
 Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
-    Route::resource('stok', StokController::class)->parameters(['stok' => 'produk'])->scoped(['produk' => 'slug']);
+    // Route::resource('stok', StokController::class)->parameters(['stok' => 'produk'])->scoped(['produk' => 'slug']);
+    Route::get('stok', [StokController::class, 'index'])->name('stok.index');
+    Route::post('stok/updated-stok', [StokController::class, 'ajax'])->name('stok.ajax');
+});
+
+// Ukuran
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::resource('ukuran', UkuranController::class)->scoped(['ukuran' => 'slug']);
+});
+
+// Diskon
+Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
+    Route::get('diskon/create', [DiskonController::class, 'redirectTo']);
+    Route::get('diskon/create/{produk:slug}', [DiskonController::class, 'create'])->name('diskon.create');
+    Route::resource('diskon', DiskonController::class)->parameters(['diskon' => 'produk'])->scoped(['produk' => 'slug'])->except(['create']);
 });
 
 

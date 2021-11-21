@@ -39,4 +39,10 @@ class Produk extends Model
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+
+
+    public function diskon()
+    {
+        return $this->hasOne(Diskon::class, 'produk_id');
+    }
 }

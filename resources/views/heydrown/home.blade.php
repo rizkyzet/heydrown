@@ -34,11 +34,11 @@
         <div class="row row-cols-md-4 row-cols-2 mb-5">
             <?php for($i=1;$i<=4;$i++): ?>
             <div class="col px-4">
-                <div class="card bg-transparent heydrown-card">
-                    <div class="position-absolute top-0 px-3 py-1" style="background-color: rgb(0, 0, 0,1);z-index:2;">
-                        <a class="text-white text-decoration-none font-weight-bold">New</a>
+                <div class="card bg-transparent heydrown-card border-0">
+                    <div class="position-absolute top-0 d-flex" style="z-index:2;">
+                        <div class="text-white font-weight-bold px-3 mr-1 heydrown-bg-black">New</div>
                     </div>
-                    <a href="/product/this-is-slug" class="product-photo-click">
+                    <a href="/product/this-is-slug" class="product-photo-click position-relative">
                         <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
                     <div class="card-body px-0 py-1">
@@ -59,10 +59,14 @@
         <div class="row row-cols-md-4 row-cols-2 mb-5">
             <?php for($i=1;$i<=4;$i++): ?>
             <div class="col px-4">
-                <div class="card bg-transparent heydrown-card">
-                    <div class="position-absolute top-0 px-3 py-1" style="background-color: rgb(0, 0, 0,1);z-index:2;">
+                <div class="card bg-transparent heydrown-card border-0">
+                    {{-- <div class="position-absolute top-0 px-3 py-1" style="background-color: rgb(0, 0, 0,1);z-index:2;">
                         <a class="text-white text-decoration-none font-weight-bold">Hot</a>
+                    </div> --}}
+                    <div class="position-absolute top-0 d-flex" style="z-index:2;">
+                        <div class="text-white font-weight-bold px-3 mr-1 heydrown-bg-black">Hot</div>
                     </div>
+
                     <a href="/product/this-is-slug" class="product-photo-click">
                         <img src="/img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
@@ -83,7 +87,10 @@
         <div class="row row-cols-md-4 row-cols-2">
             <?php for($i=1;$i<=7;$i++): ?>
             <div class="col px-4">
-                <div class="card bg-transparent heydrown-card h-100">
+                <div class="card bg-transparent heydrown-card h-100 border-0">
+                    <div class="position-absolute top-0 d-flex" style="z-index:2;">
+                        <div class="text-white font-weight-bold px-3 mr-1 heydrown-bg-black">30% Off</div>
+                    </div>
                     <a href="/product/this-is-slug" class="product-photo-click">
                         <img src=" /img/baju.jpg" class="card-img-top product-photo" alt="...">
                     </a>
@@ -92,13 +99,21 @@
                             class="text-decoration-none font-weight-bold text-white product-name">
                             Heydrown Shirt One
                         </a>
-                        <p>Rp. 100.000</p>
+                        <div class="d-flex product-harga">
+                            <p class="mr-2" style="text-decoration: line-through">Rp. 100.000</p>
+                            <p>Rp. 50.000</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <?php endfor ?>
             <div class="col px-4">
-                <div class="card bg-transparent heydrown-card h-100">
+                <div class="card bg-transparent heydrown-card h-100 border-0">
+                    <div class="position-absolute top-0 d-flex flex-wrap" style="z-index:2;">
+                        <div class="text-white font-weight-bold px-3 mr-1 heydrown-bg-black">100% Off</div>
+                        <div class="text-white font-weight-bold px-3 mr-1 heydrown-bg-black">Free Ongkir</div>
+                        <div class="text-white font-weight-bold px-3 my-1 mr-1 heydrown-bg-black">Gratis Rumah</div>
+                    </div>
                     <a href="/product/this-is-slug" class="product-photo-click">
                         <img src="/img/fazri.jpg" class="card-img-top product-photo" alt="...">
                     </a>
@@ -107,7 +122,10 @@
                             class="text-decoration-none font-weight-bold text-white product-name">
                             Sesosok
                         </a>
-                        <p>Rp. 100</p>
+                        <div class="d-flex product-harga">
+                            <p class="mr-2" style="text-decoration: line-through">Rp. 100</p>
+                            <p>Rp. 0</p>
+                        </div>
                     </div>
                 </div>
             </div>

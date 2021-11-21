@@ -47,6 +47,9 @@
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
 
+    {{-- Livewire Style --}}
+    {{-- @livewireStyles --}}
+
     {{-- Stack CSS --}}
     @stack('css')
 </head>
@@ -80,6 +83,10 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> --}}
     <script src="/js/dashboard.js"></script>
+    {{-- Livewire Script --}}
+    {{-- @livewireScripts --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @stack('scripts')
 </body>
 

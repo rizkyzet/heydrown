@@ -6,7 +6,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <a class="btn btn-sm btn-primary mx-1 my-2" href="">Kelola Stok</a>
+        <a class="btn btn-sm btn-primary mx-1 my-2" href="{{ route('dashboard.stok.index') }}">Kelola Stok</a>
         <a class="btn btn-sm btn-success mx-1 my-2" href="{{ route('dashboard.produk.edit', $produk) }}">Edit Data
             Produk</a>
     </div>
@@ -48,7 +48,7 @@
 
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-4">
             <table class="table table-sm w-100 text-center">
                 <tr>
@@ -67,6 +67,6 @@
                     <td>0</td>
                 </tr>
             </table>
-            < </div>
         </div>
-    @endsection
+    </div> --}}
+@endsection

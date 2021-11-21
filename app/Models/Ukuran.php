@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Ukuran extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $guarded = [
         'id'
@@ -19,5 +20,15 @@ class Ukuran extends Model
     public function produk()
     {
         return $this->belongsToMany(Produk::class, 'stok', 'ukuran_id', 'produk_id')->withPivot('jumlah')->as('stok');
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'tipe',
+                'onUpdate' => true
+            ]
+        ];
     }
 }
