@@ -3,29 +3,16 @@
 @section('content')
     <div class="heydrown-loading"></div>
     {{-- Caraousel --}}
-    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="carousel-hd-img-1 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
-                        EXCLUSIVE & AUTHENTIC</h4>
-                </div>
+                <img src="/img/caraousel-img-1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <div class="carousel-hd-img-2 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
-                        EXCLUSIVE &
-                        AUTHENTIC
-                    </h4>
-                </div>
+                <img src="/img/caraousel-img-2.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <div class="carousel-hd-img-3 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
-                        EXCLUSIVE &
-                        AUTHENTIC
-                    </h4>
-                </div>
+                <img src="/img/caraousel-img-3.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
@@ -191,11 +178,10 @@
 @endsection
 
 @push('scripts')
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script>
         $(document).ready(function() {
             $(".heydrown-loading").fadeOut("slow");
+            AOS.init();
         })
     </script>
 @endpush
@@ -212,33 +198,6 @@
             z-index: 9999;
             overflow: hidden;
             background: url({{ asset('img/loading.gif') }}) center no-repeat black;
-        }
-
-        .carousel-item {
-            min-height: 100vh;
-        }
-
-        .carousel-hd-img-1,
-        .carousel-hd-img-2,
-        .carousel-hd-img-3 {
-            min-height: 100vh;
-
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .carousel-hd-img-1 {
-            background-image: url({{ asset('img/new-carousel-3.jpg') }});
-        }
-
-        .carousel-hd-img-2 {
-            background-image: url({{ asset('img/new-carousel-1.jpg') }});
-        }
-
-        .carousel-hd-img-3 {
-            background-image: url({{ asset('img/new-carousel-2.jpg') }});
         }
 
     </style>

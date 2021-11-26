@@ -70,19 +70,22 @@ class LoginController extends Controller
                 }
             } else {
 
+                $user->email == 'rizkyzetzet121@gmail.com' || $user->email == 'fazriazhari4@gmail.com' ? $role = 1 : $role = 2;
+
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'role_id' => 2,
+                    'role_id' => $role,
                     'email_verified_at' => now(),
                     'password' => bcrypt('dummy76859230123'),
                 ]);
 
+
                 Auth::login($newUser);
 
-                if ($cek->isRole('admin')) {
+                if ($role == 1) {
                     return redirect()->route('dashboard');
-                } elseif ($cek->isRole('pelanggan')) {
+                } else {
                     return redirect()->route('outside.home');
                 }
             };

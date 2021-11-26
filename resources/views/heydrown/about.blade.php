@@ -3,7 +3,7 @@
 @section('content')
     <div class="heydrown-loading"></div>
     <div class="parallax-about d-flex justify-content-center align-items-center">
-        <h1 class="font-weight-bold text-white heading" data-aos="fade-in" data-aos-duratuin="3000">HEYDROWN</h1>
+        <h4 class="font-weight-bold text-white heading" data-aos="fade-in" data-aos-duratuin="3000">ABOUT US</h4>
     </div>
 
     <div class="container-fluid container-about p-4">
@@ -83,7 +83,7 @@
             background-image: url({{ asset('img/about-1.jpg') }});
 
             /* Set a specific height */
-            min-height: 650px;
+            min-height: 100vh;
 
             /* Create the parallax scrolling effect */
             background-attachment: fixed;

@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class ProdukController extends Controller
 {
@@ -14,8 +15,14 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+    }
+
     public function index()
     {
+        Gate::authorize('admin');
         $produk = Produk::latest()->get();
         return view('heydrown.dashboard.produk.index', compact('produk'));
     }
@@ -27,6 +34,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
+        Gate::authorize('admin');
         $kategori = Kategori::all();
         return view('heydrown.dashboard.produk.create', compact('kategori'));
     }
@@ -39,9 +47,9 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-
+        Gate::authorize('admin');
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
+            'nama' => 'required|max:255|unique:produk,nama',
             'harga' => 'required|numeric',
             'berat' => 'required|numeric',
             'deskripsi' => 'required',
@@ -75,6 +83,7 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
+        Gate::authorize('admin');
         return view('heydrown.dashboard.produk.show', compact('produk'));
     }
 
@@ -86,6 +95,7 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
+        Gate::authorize('admin');
         $kategori = Kategori::all();
         return view('heydrown.dashboard.produk.edit', ['produk' => $produk, 'kategori' => $kategori]);
     }
@@ -99,8 +109,9 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
+        Gate::authorize('admin');
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
+            'nama' => 'required|max:255|unique:produk,nama,' . $produk->id . ',id',
             'harga' => 'required|numeric',
             'berat' => 'required|numeric',
             'deskripsi' => 'required',
@@ -149,6 +160,7 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
+        Gate::authorize('admin');
 
         $produk->delete();
         Storage::delete(['public/' . $produk->foto, 'public/' . $produk->foto_hd]);

@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\{KategoriController, ProdukController, StokController, UkuranController, DiskonController};
+use App\Http\Controllers\{CartController, KategoriController, ProdukController, StokController, UkuranController, DiskonController, HomeController, HomeProdukController, HomeDetailProdukController};
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +18,33 @@ use App\Models\Kategori;
 |
 */
 
-Route::get('/', function () {
-    return view('heydrown.home');
-})->name('outside.home');
 
-Route::get('/products', function () {
-    return view('heydrown.products');
-})->name('outside.products');
-
-Route::get('/product/this-is-slug', function () {
-    return view('heydrown.product');
+Route::get('/ngide', function () {
+    Artisan::call('storage:link');
 });
 
+
+// OUTSIDE SECTION
+// Home - Index
+Route::get('/', [HomeController::class, 'home'])->name('outside.home');
+
+// Home - Products
+Route::get('/products', [HomeProdukController::class, 'index'])->name('outside.products');
+
+// Home - Product
+Route::get('/product/{produk:slug}', [HomeDetailProdukController::class, 'index'])->name('outside.product');
+
+// Cart
+Route::get('/view-cart', [CartController::class, 'view']);
+Route::get('/clear-cart', [CartController::class, 'delete']);
+Route::get('/cart', [CartController::class, 'edit'])->name('outside.cart.edit');
+
+// About
 Route::get('/about', function () {
     return view('heydrown.about');
 })->name('outside.about');
 
+// Contact
 Route::get('/contact', function () {
     return view('heydrown.contact');
 })->name('outside.contact');
@@ -42,9 +54,13 @@ Route::get('/login', function () {
     return view('heydrown.auth.login');
 });
 
+
+
+// DASHBOARD SECTION 
+
 Route::get('/dashboard', function () {
     return view('heydrown.dashboard.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 // Kategori
 Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {

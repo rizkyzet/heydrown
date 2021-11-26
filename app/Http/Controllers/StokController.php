@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Produk, Ukuran, Stok};
-
+use Illuminate\Support\Facades\Gate;
 
 class StokController extends Controller
 {
@@ -15,6 +15,7 @@ class StokController extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin');
         $produk = Produk::all();
         $ukuran = Ukuran::all();
 
@@ -64,7 +65,7 @@ class StokController extends Controller
      */
     public function edit(Produk $produk)
     {
-
+        Gate::authorize('admin');
         $ukuran = Ukuran::all();
         return view('heydrown.dashboard.stok.edit', ['produk' => $produk, 'ukuran' => $ukuran]);
     }
@@ -95,7 +96,7 @@ class StokController extends Controller
     public function ajax()
     {
 
-
+        Gate::authorize('admin');
         $produk_id = request()->produk_id;
         $ukuran_id = request()->ukuran_id;
         $jumlah = request()->jumlah;
@@ -103,8 +104,18 @@ class StokController extends Controller
         // dump($produk_id, $ukuran_id, $jumlah);
 
         $produk = Produk::find($produk_id)->ukuran->where('id', $ukuran_id);
+
         if ($produk->count() > 0) {
-            $produk->first()->stok->update(['jumlah' => $jumlah]);
+            // jika jumlah yang di update leibh dari 0
+            if ($jumlah > 0) {
+                // produk akan di update
+                $produk->first()->stok->update(['jumlah' => $jumlah]);
+                // selain itu (jika jumlah kurang dari 0)
+            } else {
+                // maka di data di tabel stok akan ter delete
+                $produk->first()->stok->delete();
+            };
+
             return 'Stok updated to ' . $jumlah;
         } else {
 

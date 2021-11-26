@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Gate;
 
 class KategoriController extends Controller
 {
@@ -15,6 +16,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin');
         $kategori = Kategori::all();
 
         return view('heydrown.dashboard.kategori.index', compact('kategori'));
@@ -27,6 +29,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
+        Gate::authorize('admin');
         return view('heydrown.dashboard.kategori.create');
     }
 
@@ -38,6 +41,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('admin');
         $validData = $request->validate([
             'nama' => 'required|unique:kategori,nama'
         ]);
@@ -55,6 +59,7 @@ class KategoriController extends Controller
      */
     public function show(Kategori $kategori)
     {
+        Gate::authorize('admin');
         return redirect()->route('dashboard.kategori.index');
     }
 
@@ -66,6 +71,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
+        Gate::authorize('admin');
         return view('heydrown.dashboard.kategori.edit', compact('kategori'));
     }
 
@@ -78,6 +84,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, Kategori $kategori)
     {
+        Gate::authorize('admin');
         $validData = $request->validate([
             'nama' => 'required|unique:kategori,nama,' . $kategori->id . ',id'
         ]);
@@ -99,6 +106,7 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
+        Gate::authorize('admin');
         $kategori->delete();
         return redirect()->route('dashboard.kategori.index')->with('success', 'Kategori berhasil dihapus');
     }

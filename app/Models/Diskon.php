@@ -16,4 +16,13 @@ class Diskon extends Model
     {
         return $this->belongsTo(Produk::class, 'produk_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->whereHas('produk', function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            });
+        });
+    }
 }

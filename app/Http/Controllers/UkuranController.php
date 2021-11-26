@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ukuran;
+use Illuminate\Support\Facades\Gate;
 
 class UkuranController extends Controller
 {
@@ -14,6 +15,7 @@ class UkuranController extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin');
         $ukuran = Ukuran::all();
         return view('heydrown.dashboard.ukuran.index', compact('ukuran'));
     }
@@ -25,6 +27,7 @@ class UkuranController extends Controller
      */
     public function create()
     {
+        Gate::authorize('admin');
         return view('heydrown.dashboard.ukuran.create');
     }
 
@@ -36,6 +39,7 @@ class UkuranController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('admin');
         $validData = $request->validate([
             'tipe' => 'required|unique:ukuran,tipe'
         ]);
@@ -66,7 +70,7 @@ class UkuranController extends Controller
      */
     public function edit(Ukuran $ukuran)
     {
-
+        Gate::authorize('admin');
         return view('heydrown.dashboard.ukuran.edit', compact('ukuran'));
     }
 
@@ -79,6 +83,7 @@ class UkuranController extends Controller
      */
     public function update(Request $request, Ukuran $ukuran)
     {
+        Gate::authorize('admin');
         $validData = $request->validate([
             'tipe' => 'required|unique:ukuran,tipe,' . $ukuran->id . ',id'
         ]);
@@ -98,6 +103,7 @@ class UkuranController extends Controller
      */
     public function destroy(Ukuran $ukuran)
     {
+        Gate::authorize('admin');
         $ukuran->delete();
 
         return redirect()->route('dashboard.ukuran.index')->with('success', 'Data ukuran berhasil dihapus!');

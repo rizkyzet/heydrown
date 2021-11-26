@@ -45,4 +45,20 @@ class Produk extends Model
     {
         return $this->hasOne(Diskon::class, 'produk_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where(function ($query) use ($search) {
+                $query->where('nama', 'like', '%' . $search . '%');
+            });
+        });
+
+        $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
+            return $query->whereHas('kategori', function ($query) use ($kategori) {
+                $query->where('slug', $kategori);
+            });
+        });
+    }
 }

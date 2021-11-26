@@ -1,5 +1,5 @@
 <?php
 function rupiah($angka)
 {
-    return number_format($angka, 2, ',', '.');
+    return number_format($angka, 0, ',', '.');
 }

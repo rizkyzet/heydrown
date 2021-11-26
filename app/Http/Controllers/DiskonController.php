@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Diskon, Produk};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class DiskonController extends Controller
 {
@@ -21,6 +22,7 @@ class DiskonController extends Controller
 
     public function index()
     {
+        Gate::authorize('admin');
         $produk = Produk::all();
 
         return view('heydrown.dashboard.diskon.index', compact('produk'));
@@ -33,7 +35,7 @@ class DiskonController extends Controller
      */
     public function create(Produk $produk)
     {
-
+        Gate::authorize('admin');
         if (is_null($produk)) {
             return redirect()->route('dashboard.diskon.index')->with('failed', 'Pilih Produk!');
         } elseif ($produk->diskon) {
@@ -52,6 +54,7 @@ class DiskonController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('admin');
         $validData = $request->validate([
             'berlaku' => 'date|required',
             'potongan' => 'required|numeric|min:1',
@@ -84,7 +87,7 @@ class DiskonController extends Controller
      */
     public function edit(Produk $produk)
     {
-
+        Gate::authorize('admin');
         return view('heydrown.dashboard.diskon.edit', compact('produk'));
     }
 
@@ -97,7 +100,7 @@ class DiskonController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-
+        Gate::authorize('admin');
         $validData = $request->validate([
             'berlaku' => 'date|required',
             'potongan' => 'required|numeric|min:1',
@@ -120,6 +123,7 @@ class DiskonController extends Controller
      */
     public function destroy(Produk $produk)
     {
+        Gate::authorize('admin');
         $produk->diskon->delete();
         return redirect()->route('dashboard.diskon.index')->with('success', 'Diskon berhasil di hapus');
     }

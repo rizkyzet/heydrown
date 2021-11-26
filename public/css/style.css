@@ -8,9 +8,16 @@
 
 
 body {
-    font-family: 'Montserrat';
-    box-sizing: border-box;
+    font-family: 'Roboto';
+    overflow-x: hidden;
+    height: 100%;
+}
 
+
+
+/* HEADER SECTION */
+.dropdown .btn {
+    font-size: 0.9rem;
 }
 
 
@@ -18,19 +25,21 @@ body {
 /* Navbar - Layout*/
 
 .heydrown-navbar {
-    background-color: black;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
 }
 
 .heydrown-navbar .navbar-brand {
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
 }
 
-.heydrown-navbar .navbar-brand img {
+
+/* .heydrown-navbar .navbar-brand img {
     border: 1px solid white;
     background-color: white;
     border-radius: 50%;
-}
+} */
 
 .heydrown-navbar .navbar-brand,
 .heydrown-navbar .nav-link {
@@ -40,7 +49,10 @@ body {
 .heydrown-navbar .nav-link {
     color: #eaeaea;
     font-weight: bold;
-    opacity: 0.8;
+    opacity: 1;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+
 }
 
 .heydrown-navbar .nav-link.active {
@@ -52,6 +64,102 @@ body {
     opacity: 1;
     color: white;
 }
+
+
+/* OFFCANVAS SECTION */
+.heydrown-nav-offcanvas {
+    width: 40%;
+    background-color: var(--heydrown-primary-color);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    right: -100%;
+    z-index: 100000;
+    opacity: 0.95;
+    overflow-y: scroll;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-heydrown-transparent {
+    background-color: transparent !important;
+    border: 0;
+}
+
+.btn-heydrown-transparent:focus {
+    border: 0;
+}
+
+.btn-heydrown-transparent:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+}
+
+
+.slide-right {
+    right: 0;
+}
+
+.heydrown-nav-offcanvas .menu a {
+    border-bottom: 1px solid white !important;
+    letter-spacing: 1px;
+}
+
+.heydrown-nav-offcanvas .menu a.active {
+    font-weight: bold;
+}
+
+
+/* lOGIN OFFCANVAS SECTION */
+.login-offcanvas .heading {
+    border-bottom: 2px solid white;
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+.login-offcanvas .form {
+    border: 2px solid white;
+}
+
+.login-offcanvas input {
+    background-color: var(--heydrown-primary-color) !important;
+    border: 2px solid white !important;
+    color: white;
+    outline: 0;
+    box-shadow: none;
+}
+
+.login-offcanvas input:focus {
+    outline: 0 !important;
+    color: white;
+    box-shadow: none !important;
+}
+
+
+.login-offcanvas button {
+    background-color: transparent !important;
+    border: 2px solid white !important;
+}
+
+.login-offcanvas button:focus {
+    border: 0;
+}
+
+.login-offcanvas button:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+}
+
+.socialite a {
+    border: 2px solid white;
+
+}
+
+.socialite a:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
 
 .heydrown-bg {
     background-color: var(--heydrown-primary-color);
@@ -77,6 +185,17 @@ body {
     object-fit: cover;
 }
 
+.heydrown-card .out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.624);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+}
+
 
 /* Footer - Layout */
 .heydrown-footer {
@@ -87,11 +206,13 @@ body {
 
 /* Sidebar - Products */
 .heydrown-sidebar .nav-link {
-    color: white;
+    color: rgb(177, 177, 177);
 }
 
 .heydrown-sidebar .nav-link.active {
+    color: white;
     font-weight: bold !important;
+
 }
 
 
@@ -123,10 +244,13 @@ body {
 }
 
 
-/* Carousel - Home */
-/* .carousel-inner {
-    border-bottom: 1px solid white !important;
-} */
+/* CAROUSEL SECTION */
+
+.carousel .heading {
+    letter-spacing: 2px;
+
+}
+
 
 
 
@@ -143,13 +267,27 @@ body {
 
 /*  Product */
 .detail-product .harga {
-    font-size: 28px;
+    font-size: 18px;
 }
 
 
 .detail-product .form-control {
     border: 1px solid white !important;
     background-color: var(--heydrown-primary-color);
+    color: white;
+
+}
+
+.detail-product .form-control:disabled {
+    border: 1px solid white !important;
+    background-color: black;
+    color: white;
+
+}
+
+.detail-product input.form-control:read-only {
+    border: 1px solid white !important;
+    background-color: black !important;
     color: white;
 
 }
@@ -216,4 +354,184 @@ button.sign-out:hover {
     opacity: 0.050;
     letter-spacing: 10px;
     font-family: serif;
+}
+
+
+/* MY CUSTOM CSS SECTION */
+.lsp-5 {
+    letter-spacing: 5px;
+}
+
+
+/* CART CSS SECTION */
+/* Cart icon */
+.cart-quantity {
+    font-size: 12px;
+}
+
+.btn-heydrown {
+    background-color: black !important;
+    border: 1px solid black !important;
+    box-shadow: 0 black;
+}
+
+.cart-quantity {
+    -moz-appearance: textfield;
+}
+
+.cart-quantity::-webkit-outer-spin-button,
+.cart-quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.heydrown-offcanvas {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 10000000;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 30vw;
+    opacity: 0.95;
+    padding: 5px;
+    transition: all 0.6s ease-in-out;
+    left: -1000px;
+}
+
+.heydrown-offcanvas .header {
+    letter-spacing: 2px;
+}
+
+.heydrown-offcanvas ul {
+    padding: 0;
+
+}
+
+.heydrown-offcanvas ul li {
+    list-style: none;
+
+}
+
+.heydrown-offcanvas button {
+    background-color: transparent;
+}
+
+.heydrown-offcanvas .kategori-container a.active {
+    font-weight: bold;
+}
+
+.slide {
+    left: 0;
+}
+
+.btn-canvas.stick {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    bottom: 50%;
+
+    border-radius: 0;
+    background-color: black;
+}
+
+
+
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    .heydrown-nav-offcanvas {
+        width: 85%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) {
+    .heydrown-nav-offcanvas {
+        width: 55%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .heydrown-nav-offcanvas {
+        width: 50%;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .heydrown-nav-offcanvas {
+        width: 35%;
+    }
+}
+
+
+/* ANIMATION SECTION */
+/* @keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+
+
+    to {
+        opacity: 1;
+    }
+} */
+
+
+
+
+/* SCROLL */
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--heydrown-primary-color);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--heydrown-primary-color);
+}
+
+
+/* BANNER SECTION */
+.heydrown-banner {
+    height: 45vh;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.banner-cart {
+    background-color: var(--heydrown-primary-color);
+    height: 8vh;
+}
+
+.banner-products {
+    background-image: url('/img/banner-1.jpg');
+
+}
+
+.banner-contact {
+    background-image: url('/img/banner-2.jpg');
 }

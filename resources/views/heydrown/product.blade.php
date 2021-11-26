@@ -2,51 +2,49 @@
 
 @section('content')
 
-    <div class="container px-5 py-4">
-        <div class="row row-cols-md-1 row-cols-1 row-cols-sm-1 row-cols-lg-2 detail-product">
-            <div class="col p-4 d-flex align-items-center justify-content-center">
-                <img src="/img/baju-detail.jpg" alt="" class="img-fluid foto-product" id="thumb"
-                    data-large-img-url="/img/baju.jpg">
+    <div class="container px-5 py-5">
+        <div class="row row-cols-md-1 row-cols-1 row-cols-sm-1 row-cols-lg-2 detail-product justify-content-center">
+
+            {{-- Kiri -Foto --}}
+            <div class="col p-0 d-flex align-items-center justify-content-center">
+                <img src="{{ asset('storage/' . $produk->foto) }}" alt="" class="img-fluid foto-product" id="thumb"
+                    data-large-img-url="{{ asset('storage/' . $produk->foto_hd) }}">
             </div>
-            <div class="col py-4 px-4">
+
+            {{-- Kanan - Detail --}}
+            <div class="col-lg-6 col-md-8 col-sm-12 col-12 d-flex flex-column justify-content-between p-3">
                 <div class="product-header">
-                    <h2 class="font-weight-bold">Heydrown Shirt One</h2>
-                    <p class=" p-0 m-0 nama">T-Shirt &mdash; Short Leeve</p>
-                    <p class="p-0 harga">Rp. 100.000</p>
+                    <h3 class="font-weight-bold">{{ $produk->nama }}</h3>
+                    <a href="{{ route('outside.products') . '?kategori=' . $produk->kategori->slug }}"
+                        class="nama p-0 m-0 text-white text-decoration-none">{{ $produk->kategori->nama }}</a><br>
+                    @if ($produk->diskon)
+                        <div class="mb-5">
+                            <small class="p-0 d-inline text-muted" style="text-decoration: line-through">
+                                Rp.{{ rupiah($produk->harga) }}
+                            </small>
+                            <p class="p-0 harga d-inline">Rp. {{ rupiah($produk->diskon->harga_diskon) }}</p>
+                            <span class="px-2 py-1"
+                                style="background: black">{{ '-' . $produk->diskon->potongan . '%' }}</span>
+                        </div>
+                    @else
+                        <div class="mb-4">
+                            <p class="p-0 harga">Rp. {{ rupiah($produk->harga) }}</p>
+                        </div>
+                    @endif
+
                 </div>
 
-                <div class="product-description mt-5">
-                    <h3 class="font-weight-bold">Product Description</h3>
+                <div class="product-description">
+                    <h5 class="font-weight-bold">Product Description</h5>
                     <p class="p-0 mt-2 mb-5">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum voluptas aliquid repudiandae nisi,
-                        tempora sint perferendis ut, voluptatum voluptate harum necessitatibus laborum! Natus voluptas,
-
+                        {{ $produk->deskripsi }}
                     </p>
                 </div>
 
-                <form>
-                    <div class="form-row">
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="" class="font-weight-bold">Size</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="">XL</option>
-                                    <option value="">L</option>
-                                    <option value="">M</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="" class="font-weight-bold">Quantity</label>
-                                <input type="number" min="1" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col d-flex align-items-center mt-3 ">
-                            <button class="btn btn-dark btn-cart">Add to Cart</button>
-                        </div>
-                    </div>
-                </form>
+
+                @livewire('add-to-cart',['produk'=>$produk])
+
+
             </div>
         </div>
     </div>
@@ -54,16 +52,71 @@
 
 @endsection
 
+@push('css')
+    {{-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"> --}}
+    @livewireStyles()
+@endpush
 
 @push('scripts')
+
+
+    @livewireScripts()
+
     <script type="text/javascript">
         var evt = new Event(),
             m = new Magnifier(evt);
         m.attach({
             thumb: '#thumb',
             mode: 'inside',
-            zoom: 3,
-            zoomable: true
+            zoom: 2,
+            zoomable: false
         });
+
+        window.addEventListener('addtocart-alert', event => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                },
+                background: 'black',
+                iconColor: 'white',
+
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: '<h5 style="color:white;text-align:center;">' + event.detail.message + '</h5>'
+            })
+        })
+
+
+        window.addEventListener('addtocart-run', event => {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                },
+                background: 'black',
+                iconColor: 'white',
+
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: '<h5 style="color:white;text-align:center;">' + event.detail.message + '</h5>'
+            })
+
+            $('.cart-quantity').html(event.detail.totalCart);
+        })
     </script>
 @endpush
