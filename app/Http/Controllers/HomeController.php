@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Produk, Diskon};
-
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,8 +31,12 @@ class HomeController extends Controller
 
     public function home()
     {
-        $newProduk = Produk::take(4)->orderBy('created_at', 'desc')->get();
+
+   
+        $newProduk = Produk::take(8)->orderBy('created_at', 'desc')->get();
         $diskonProduk = Diskon::take(8)->get();
+
+
 
         return view('heydrown.home', compact('newProduk', 'diskonProduk'));
     }

@@ -1,0 +1,205 @@
+$primary-color:#1c1c1c;
+$secondary-color:black;
+
+
+.heydrown-member-area {
+    .sidebar {
+
+
+        .heading {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            color: white;
+
+        }
+
+        .nav-link {
+            color: rgb(206, 206, 206);
+            padding: 3px 0px;
+        }
+
+        .nav-link.active {
+
+            color: white;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+    }
+}
+
+
+.heydrown-member-area {
+    .content {
+        .heading {
+
+            letter-spacing: 2px;
+        }
+    }
+}
+
+
+.btn-heydrown-hover {
+    border: 2px solid white;
+    color: white;
+
+}
+
+.btn-heydrown-hover:hover {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+.btn-heydrown-hover:focus {
+    outline: 0;
+}
+
+.btn-heydrown-hover:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+}
+
+
+
+
+.btn-heydrown-black-hover {
+
+    color: white;
+    background-color: black;
+    box-shadow: none !important;
+}
+
+.btn-heydrown-black-hover:hover {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+.btn-heydrown-black-hover:focus {
+    outline: 0;
+}
+
+.btn-heydrown-black-hover:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+}
+
+
+.modal-heydrown {
+
+    background-color: rgba(0, 0, 0, 0.494);
+
+
+
+
+    .modal-content {
+        background-color: $primary-color !important;
+        border: 2px solid white;
+        border-radius: 0;
+    }
+
+    .close {
+        color: white;
+    }
+}
+
+
+.heydrown-form {
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+
+.heydrown-form-group {
+
+    .heydrown-input {
+        color: white;
+        background-color: $primary-color;
+        border: 2px solid white;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .heydrown-input:disabled {
+        background-color: black;
+
+    }
+
+    .heydrown-input:focus {
+        outline: 0 !important;
+        color: black;
+        background-color: white;
+        box-shadow: none !important;
+
+    }
+
+    .heydrown-input:focus:not(:focus-visible) {
+        outline: 0 !important;
+        box-shadow: none !important;
+
+
+    }
+
+    .heydrown-input:-webkit-autofill,
+    .heydrown-input:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+    }
+
+    .heydrown-input[data-autocompleted] {
+        background-color: transparent !important;
+    }
+}
+
+.footer-sweetalert {
+    background-color: white;
+}
+
+
+
+.heydrown-alamat {
+    background-color: white;
+    // border: 2px solid white;
+    color: black;
+
+    .header {
+        border-bottom: 2px solid black;
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+
+    .card-footer {
+        background-color: black;
+    }
+
+    .card-text {
+        padding: 10px 0px;
+    }
+}
+
+
+.heydrown-form-check {
+    .form-check-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+
+        border: 2px solid #999;
+        transition: 0.2s all linear;
+        margin-right: 5px;
+
+        position: relative;
+        top: 4px;
+    }
+
+    .form-check-input:checked{
+        border: 6px solid rgb(255, 255, 255);
+    }
+}

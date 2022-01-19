@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="heydrown-banner banner-cart d-flex justify-content-center align-items-center">
+    <div class="heydrown-banner banner-empty d-flex justify-content-center align-items-center">
 
     </div>
     @if (Auth::check())
@@ -15,8 +15,8 @@
 
                 <div class="col-12 d-flex justify-content-center flex-column align-items-center">
                     <h3 class="text-center mt-5" style="letter-spacing: 10px">CART EMPTY</h3>
-                    <p class="p-2" style="letter-spacing: 2px;">You must be <a href="{{ route('login') }}"
-                            class="text-white">login</a></p>
+                    <p class="p-2" style="letter-spacing: 2px;">You must be <a class="btn-nav-canvas text-white"
+                            href="#" data-offcanvas="offcanvas-login">login</a></p>
                 </div>
 
 
@@ -33,8 +33,9 @@
                     </div>
 
                     <div class="d-flex justify-content-between mt-5">
-                        <a class="btn btn-dark btn-heydrown" href="{{ route('outside.products') }}">Continue Shopping</a>
-                        <a class="btn btn-dark btn-heydrown">Checkout</a>
+                        <a class="btn btn-dark btn-heydrown m-2" href="{{ route('outside.products') }}">Continue
+                            Shopping</a>
+                        <a class="btn btn-dark btn-heydrown m-2" href="{{ route('outside.checkout.index') }}">Checkout</a>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,8 @@ class CreateProdukTable extends Migration
             $table->string('foto_hd');
             $table->text('deskripsi');
             $table->integer('harga');
-            $table->decimal('berat', 10, 2);
+            // $table->decimal('berat', 10, 2);
+            $table->integer('berat');
             // $table->date('tgl_masuk');
             $table->unsignedBigInteger('kategori_id');
             $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade')->onUpdate('cascade');

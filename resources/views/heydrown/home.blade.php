@@ -1,30 +1,34 @@
 @extends('heydrown.layouts.app')
 
 @section('content')
-    <div class="heydrown-loading"></div>
+    <div class="loadingio-container">
+        <div class="spinner">
+            <div></div>
+        </div>
+    </div>
     {{-- Caraousel --}}
     <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-hd-img-1 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
-                        EXCLUSIVE & AUTHENTIC</h4>
+                    <h5 class="font-weight-bold text-white heading font-italic">
+                        EXCLUSIVE & AUTHENTIC</h5>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-hd-img-2 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
+                    <h5 class="font-weight-bold text-white heading font-italic">
                         EXCLUSIVE &
                         AUTHENTIC
-                    </h4>
+                    </h5>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-hd-img-3 d-flex justify-content-center align-items-center">
-                    <h4 class="font-weight-bold text-white heading">
+                    <h5 class="font-weight-bold text-white heading font-italic">
                         EXCLUSIVE &
                         AUTHENTIC
-                    </h4>
+                    </h5>
                 </div>
             </div>
         </div>
@@ -104,7 +108,7 @@
 
 
         {{-- Hot Produk --}}
-        <h2 class="font-weight-bold p-2">Hot Products</h2>
+        {{-- <h2 class="font-weight-bold p-2">Hot Products</h2> --}}
         {{-- <div class="row row-cols-md-4 row-cols-2 mb-5">
             <?php for($i=1;$i<=4;$i++): ?>
             <div class="col px-4">
@@ -128,11 +132,11 @@
             </div>
             <?php endfor ?>
         </div> --}}
-        <div class="row mb-5">
+        {{-- <div class="row mb-5">
             <div class="col text-center">
                 <p style="letter-spacing: 5px">Products Empty</p>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Gallery --}}
         <h2 class="font-weight-bold p-2">Sale Products</h2>
@@ -183,7 +187,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="d-flex justify-content-center mt-2">
+        <div class="d-flex justify-content-center mt-4">
             <a href="{{ route('outside.products') }}" class="btn border-0 text-white bg-heydrown"
                 style="background-color:black;">Lihat Semua</a>
         </div>
@@ -194,8 +198,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $(".heydrown-loading").fadeOut("slow");
+        $(window).on('load', function() {
+            $(".loadingio-container").delay(500).fadeOut("slow");
         })
     </script>
 @endpush

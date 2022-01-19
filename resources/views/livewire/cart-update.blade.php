@@ -1,13 +1,38 @@
 <div>
+
+
     {{-- Care about people's approval and you will be their prisoner. --}}
 
     <div class="container p-5" style="min-height: 100vh;">
         <h4 class="font-weight-bold text-center lsp-5">Your Cart</h4>
-        <div class="row">
+        @if (Session::has('infoCart'))
+            @foreach (Session::get('infoCart') as $s)
+                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                    <strong>Maaf! Ada Perubahan data di stok kami : </strong> {{ $s }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endforeach
+        @endif
 
+
+        @if (Session::has('infoCartToo'))
+            @foreach (Session::get('infoCartToo') as $s)
+                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                    <strong>Maaf proses checkout anda terganggu, ada Perubahan data di stok kami : </strong>
+                    {{ $s }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endforeach
+        @endif
+
+        <div class="row position-relative">
 
             @forelse ($cart as $c)
-                <div class="col-6 col-sm-6 col-md-12 col-lg-12 my-2">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-2">
                     <div class="row justify-content-center cart-edit position-relative">
                         <div class="col-12 col-sm-12 col-md-2 col-lg-1 ">
                             <a href="{{ route('outside.product', $c->associatedModel) }}">
@@ -18,6 +43,7 @@
                                 style="position: absolute;top:0;left:0;border-radius:50%;"
                                 wire:click="delete('{{ $c->id }}')" type="button">X</button>
                         </div>
+
                         <div
                             class="col-12 col-sm-12 col-md-3 col-lg-3 d-flex align-items-center justify-content-start p-3">
                             <div class="cart-deskripsi">
@@ -33,29 +59,31 @@
                                 @endif
                             </div>
                         </div>
+
                         <div
                             class="col-12 col-sm-12 col-md-2 col-lg-2 d-flex align-items-center justify-content-center p-1">
                             <button type="button" class="btn btn-sm btn-dark heydrown-bg-black" style="width:25px;"
                                 wire:click="kurangCart('{{ $c->id }}','{{ $c->quantity }}')"
-                                wire:loading.attr="disabled">-</button>
+                                wire:loading.attr="disabled"
+                                wire:target="kurangCart('{{ $c->id }}','{{ $c->quantity }}')">-</button>
                             <input id="input{{ $c->id }}" type="number"
                                 class="form-control text-center col-4 cart-quantity"
                                 style="height: 28px;border-radius:0;" value="{{ $c->quantity }}"
-                                wire:change="editQuantity('{{ $c->id }}',$event.target.value)"
-                                wire:loading.attr="disabled" wire:target="editQuantity">
+                                wire:change="editQuantity('{{ $c->id }}',$event.target.value)">
                             <button type="button" class="btn btn-sm btn-dark heydrown-bg-black" style="width:25px;"
                                 wire:click="tambahCart('{{ $c->id }}','{{ $c->quantity }}')"
-                                wire:loading.attr="disabled">+</button>
+                                wire:loading.attr="disabled"
+                                wire:target="tambahCart('{{ $c->id }}','{{ $c->quantity }}')">+</button>
                         </div>
                         <div
                             class="col-12 col-sm-12 col-md-3 col-lg-3 d-flex flex-column align-items-center justify-content-center p-3 text-center">
 
                             @if (count($c->conditions) > 0)
-                                <small style="text-decoration: line-through">Rp.
-                                    {{ $c->associatedModel->harga }}</small>
-                                <p>Rp. {{ rupiah($c->getPriceWithConditions(false)) }} </p>
+                                {{-- <small style="text-decoration: line-through">Rp.
+                                    {{ $c->associatedModel->harga }}</small> --}}
+                                <p>Rp. {{ rupiah($c->getPriceSumWithConditions(false)) }} </p>
                             @else
-                                <p>Rp. {{ rupiah($c->price) }} </p>
+                                <p>Rp. {{ rupiah($c->getPriceSum(false)) }} </p>
                             @endif
 
                         </div>
@@ -82,7 +110,7 @@
 
                 <div class="d-flex justify-content-between mt-5">
                     <a class="btn btn-dark btn-heydrown" href="{{ route('outside.products') }}">Continue Shopping</a>
-                    <a class="btn btn-dark btn-heydrown">Checkout</a>
+                    <a class="btn btn-dark btn-heydrown" href="{{ route('outside.checkout.index') }}">Checkout</a>
                 </div>
             </div>
         </div>

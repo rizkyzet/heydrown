@@ -13,7 +13,7 @@ class StokProduk extends Component
 
     public function ubahStok($jumlah, $produk_id, $ukuran_id)
     {
-
+dd($jumlah);
         $produk = Produk::find($produk_id)->ukuran->where('id', $ukuran_id);
         if ($produk->count() > 0) {
             $produk->first()->stok->update(['jumlah' => $jumlah]);

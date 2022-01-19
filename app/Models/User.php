@@ -53,4 +53,7 @@ class User extends Authenticatable
     {
         return $this->role->nama == $role;
     }
+    public function pesanan(){
+        return $this->hasMany(Pesanan::class,'user_id');
+    }
 }

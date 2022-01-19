@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use App\Models\{Produk, Ukuran};
+use App\Models\{Produk, Ukuran, Stok};
 
 class CartUpdate extends Component
 {
@@ -17,6 +17,9 @@ class CartUpdate extends Component
 
     public function mount()
     {
+        $this->cekStokTerkini();
+
+
         $this->cart = collect(\Cart::session(Auth::id())->getContent())->sortByDesc(function ($product, $key) {
             return $product['attributes']['addedTime'];
         });
@@ -24,6 +27,35 @@ class CartUpdate extends Component
         $this->total = \Cart::session(Auth::id())->getTotal();
     }
 
+
+    public function cekStokTerkini()
+    {
+        $cart = \Cart::session(Auth::id())->getContent();
+
+        $message = [];
+        foreach ($cart as $c) {
+            $produk_id = $c->associatedModel->id;
+            $ukuran_id = $c->attributes->ukuran_id;
+            $quantityYgDibeli = $c->quantity;
+            $stok = Stok::where(['produk_id' => $produk_id, 'ukuran_id' => $ukuran_id])->first()->jumlah ?? null;
+
+            if ($stok) {
+                if ($stok - $quantityYgDibeli < 0) {
+                    \Cart::session(Auth::id())->update($c->id, [
+                        'quantity' => [
+                            'relative' => false,
+                            'value' => $stok
+                        ],
+                    ]);
+                    $message[] = $c->name . " size " . $c->attributes->tipe . ' stok yang tersedia hanya ' . $stok . ', produk diubah ke stok maksimal';
+                }
+            } else {
+                \Cart::session(Auth::id())->remove($c->id);
+                $message[] = $c->name . " size " . $c->attributes->tipe . ' stok kosong! , produk dihilangkan dari keranjang';
+            }
+        }
+        session()->flash('infoCart', $message);
+    }
 
     public function delete($id)
     {

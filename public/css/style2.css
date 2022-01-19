@@ -1,0 +1,166 @@
+.heydrown-member-area .sidebar .heading {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.heydrown-member-area .sidebar .nav-link {
+  color: #cecece;
+  padding: 3px 0px;
+}
+
+.heydrown-member-area .sidebar .nav-link.active {
+  color: white;
+}
+
+.heydrown-member-area .sidebar .nav-link:hover {
+  color: white;
+}
+
+.heydrown-member-area .content .heading {
+  letter-spacing: 2px;
+}
+
+.btn-heydrown-hover {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-heydrown-hover:hover {
+  color: black;
+  background-color: white;
+  font-weight: bold;
+}
+
+.btn-heydrown-hover:focus {
+  outline: 0;
+}
+
+.btn-heydrown-hover:focus:not(:focus-visible) {
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-heydrown-black-hover {
+  color: white;
+  background-color: black;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.btn-heydrown-black-hover:hover {
+  color: black;
+  background-color: white;
+  font-weight: bold;
+}
+
+.btn-heydrown-black-hover:focus {
+  outline: 0;
+}
+
+.btn-heydrown-black-hover:focus:not(:focus-visible) {
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.modal-heydrown {
+  background-color: rgba(0, 0, 0, 0.494);
+}
+
+.modal-heydrown .modal-content {
+  background-color: #1c1c1c !important;
+  border: 2px solid white;
+  border-radius: 0;
+}
+
+.modal-heydrown .close {
+  color: white;
+}
+
+.heydrown-form {
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.heydrown-form-group .heydrown-input {
+  color: white;
+  background-color: #1c1c1c;
+  border: 2px solid white;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.heydrown-form-group .heydrown-input:disabled {
+  background-color: black;
+}
+
+.heydrown-form-group .heydrown-input:focus {
+  outline: 0 !important;
+  color: black;
+  background-color: white;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.heydrown-form-group .heydrown-input:focus:not(:focus-visible) {
+  outline: 0 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.heydrown-form-group .heydrown-input:-webkit-autofill,
+.heydrown-form-group .heydrown-input:-webkit-autofill:focus {
+  -webkit-transition: background-color 600000s 0s, color 600000s 0s;
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.heydrown-form-group .heydrown-input[data-autocompleted] {
+  background-color: transparent !important;
+}
+
+.footer-sweetalert {
+  background-color: white;
+}
+
+.heydrown-alamat {
+  background-color: white;
+  color: black;
+}
+
+.heydrown-alamat .header {
+  border-bottom: 2px solid black;
+}
+
+.heydrown-alamat .card-title {
+  font-weight: bold;
+}
+
+.heydrown-alamat .card-footer {
+  background-color: black;
+}
+
+.heydrown-alamat .card-text {
+  padding: 10px 0px;
+}
+
+.heydrown-form-check .form-check-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  -webkit-transition: 0.2s all linear;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+
+.heydrown-form-check .form-check-input:checked {
+  border: 6px solid white;
+}
+/*# sourceMappingURL=style2.css.map */

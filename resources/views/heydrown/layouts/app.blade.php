@@ -31,7 +31,13 @@
     <link rel="stylesheet" type="text/css" href="/css/magnifier.css">
 
     {{-- My CSS --}}
+    <link rel="stylesheet" href="/css/loader.css">
     <link rel="stylesheet" href="/css/style.css">
+
+ 
+  
+
+    @livewireStyles()
 
     @stack('css')
 
@@ -50,7 +56,7 @@
     @if (Request::path() == 'about')
         @yield('content')
     @else
-        <div class="container-fluid heydrown-bg text-white px-0 py-0">
+        <div class="container-fluid heydrown-bg text-white px-0 pt-0" style="padding-bottom: 100px;"> 
             @yield('content')
         </div>
     @endif
@@ -65,11 +71,15 @@
     <script src="/js/bootstrap.min.js"></script> --}}
     <script type="text/javascript" src="/js/Event.js"></script>
     <script type="text/javascript" src="/js/Magnifier.js"></script>
+    <script type="text/javascript" src="/js/jquery.zoom.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    @livewireScripts()
+ 
     <script>
         $('.btn-nav-canvas,.btn-nav-canvas-close').click(function() {
             const idTarget = $(this).data('offcanvas');
-            console.log(idTarget)
+
             $('#' + idTarget).toggleClass('slide-right');
         });
 

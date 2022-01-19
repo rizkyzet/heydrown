@@ -1,14 +1,18 @@
 @extends('heydrown.layouts.app')
 
 @section('content')
+    <div class="heydrown-banner banner-empty d-flex justify-content-center align-items-center">
 
+    </div>
     <div class="container px-5 py-5">
         <div class="row row-cols-md-1 row-cols-1 row-cols-sm-1 row-cols-lg-2 detail-product justify-content-center">
 
             {{-- Kiri -Foto --}}
             <div class="col p-0 d-flex align-items-center justify-content-center">
-                <img src="{{ asset('storage/' . $produk->foto) }}" alt="" class="img-fluid foto-product" id="thumb"
-                    data-large-img-url="{{ asset('storage/' . $produk->foto_hd) }}">
+                <span style="display: inline-block;" class="foto-product-container">
+                    <img src="{{ asset('storage/' . $produk->foto) }}" alt="" class="img-fluid foto-product" id="thumb"
+                        data-large-img-url="{{ asset('storage/' . $produk->foto_hd) }}">
+                </span>
             </div>
 
             {{-- Kanan - Detail --}}
@@ -63,14 +67,24 @@
     @livewireScripts()
 
     <script type="text/javascript">
-        var evt = new Event(),
-            m = new Magnifier(evt);
-        m.attach({
-            thumb: '#thumb',
-            mode: 'inside',
-            zoom: 2,
-            zoomable: false
+        // var evt = new Event(),
+        //     m = new Magnifier(evt);
+        // m.attach({
+        //     thumb: '#thumb',
+        //     mode: 'inside',
+        //     zoom: 2,
+        //     zoomable: false
+        // });
+
+        $(document).ready(function() {
+            let hdImage = $('.foto-product-container img').data('large-img-url');
+            $('span.foto-product-container').zoom({
+                url: hdImage,
+                on:'grab',
+                magnify:1
+            });
         });
+
 
         window.addEventListener('addtocart-alert', event => {
             const Toast = Swal.mixin({
@@ -117,6 +131,10 @@
             })
 
             $('.cart-quantity').html(event.detail.totalCart);
+        })
+
+        window.addEventListener('open-login', event => {
+            $('#offcanvas-login').toggleClass('slide-right');
         })
     </script>
 @endpush

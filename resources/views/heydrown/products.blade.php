@@ -3,12 +3,15 @@
 
 @section('content')
 
-    <div class="heydrown-banner banner-products d-flex justify-content-center align-items-center">
+    {{-- <div class="heydrown-banner banner-products d-flex justify-content-center align-items-center">
         <h5 class="font-weight-bold text-white lsp-5">OUR PRODUCTS</h5>
+    </div> --}}
+    <div class="heydrown-banner banner-empty d-flex justify-content-center align-items-center">
+
     </div>
     <div class="container mt-5">
         <div class="row m-0 p-0" style="min-height: 100vh;position: relative;">
-            <button class="btn btn-dark btn-sm btn-canvas stick m-0 py-5 d-sm-inline d-inline d-md-block d-lg-block"><i
+            <button class="btn btn-dark btn-sm btn-canvas stick m-0 px-0 py-5 d-sm-inline d-inline d-md-block d-lg-block"><i
                     class="bi bi-caret-right-fill"></i></button>
 
             <div class="heydrown-offcanvas d-lg-block d-md-block d-sm-block d-block">
@@ -77,7 +80,7 @@
                 </div>
 
 
-                <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2">
+                <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
                     @if (request('event') == 'sale')
                         {{-- BY SALE --}}
                         @forelse ($data as $diskon)

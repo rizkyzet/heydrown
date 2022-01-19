@@ -55,8 +55,8 @@
 @push('scripts')
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        $(document).ready(function() {
-            $(".heydrown-loading").fadeOut("slow");
+        $(window).on('load', function() {
+            $(".heydrown-loading").delay(500).fadeOut("slow");
             AOS.init();
         })
     </script>

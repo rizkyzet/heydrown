@@ -22,6 +22,11 @@ class Ukuran extends Model
         return $this->belongsToMany(Produk::class, 'stok', 'ukuran_id', 'produk_id')->withPivot('jumlah')->as('stok');
     }
 
+    public function detailPesanan()
+    {
+        return $this->hasMany(DetailPesanan::class, 'ukuran_id');
+    }
+
     public function sluggable(): array
     {
         return [

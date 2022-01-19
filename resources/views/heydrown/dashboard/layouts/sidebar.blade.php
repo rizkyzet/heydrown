@@ -1,12 +1,12 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="user"></span>
                     Profil
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Request::routeIs('dashboard.kategori*') ? 'active' : '' }}"
                     href="{{ route('dashboard.kategori.index') }}">
@@ -49,9 +49,9 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('dashboard.pesanan.index')}}">
                     <span data-feather="file-text"></span>
-                    Current month
+                    Transaksi
                 </a>
             </li>
         </ul>

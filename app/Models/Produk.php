@@ -46,6 +46,12 @@ class Produk extends Model
         return $this->hasOne(Diskon::class, 'produk_id');
     }
 
+    public function detailPesanan()
+    {
+        return $this->hasMany(DetailPesanan::class, 'produk_id');
+    }
+
+
     public function scopeFilter($query, array $filters)
     {
 

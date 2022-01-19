@@ -25,6 +25,8 @@ class AddToCart extends Component
         $this->ukuran_id = $produk->ukuran->first()->id;
     }
 
+
+
     public function updatedUkuranId($value)
     {
         $this->getStok();
@@ -86,7 +88,8 @@ class AddToCart extends Component
 
             if (!Auth::check()) {
                 $this->dispatchBrowserEvent('addtocart-alert', ['message' => 'Kamu harus login']);
-                return redirect()->route('login');
+                $this->dispatchBrowserEvent('open-login');
+                // return redirect()->route('login');
             } else {
 
                 if ($this->cekStokDiCart()) {
@@ -100,16 +103,21 @@ class AddToCart extends Component
                         'attributes' => [
                             'ukuran_id' => $this->ukuran_id,
                             'tipe' => $this->produk->ukuran->where('id', $this->ukuran_id)->first()->tipe,
-                            'addedTime' => date('Y-m-d H:i:s')
+                            'addedTime' => date('Y-m-d H:i:s'),
+                            'berat'=>$this->produk->berat
                         ],
                         'associatedModel' => $this->produk,
                     );
 
+                    
                     if ($this->produk->diskon) {
                         $itemCondition1 = new CartCondition(array(
-                            'name' => 'SALE 5%',
+                            'name' => 'SALE '.$this->produk->diskon->potongan.'%',
                             'type' => 'sale',
-                            'value' => '-5%',
+                            'value' => '-'.$this->produk->diskon->potongan.'%',
+                            'attributes' => array( 
+                                'diskon' => $this->produk->diskon->potongan,
+                            )
                         ));
 
                         $cartItems['conditions'] = [$itemCondition1];

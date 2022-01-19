@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
+
 
 class RegisterController extends Controller
 {
@@ -69,5 +72,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function registerGoogle()
+    {
+
+        $token = request()->session()->get('token');
+        
+
+        try {
+            $user = Socialite::driver('google')->userFromToken($token);
+        } catch (Exception $e) {
+            return redirect('/');
+        }
+
+
+        return view('auth.register-user-google', compact('user'));
+    }
+
+    public function storeUserGoogle()
+    {
+        dd(request()->all());
     }
 }
